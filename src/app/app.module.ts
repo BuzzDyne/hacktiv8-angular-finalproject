@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreatePaymentModalComponent } from './components/create-payment-modal/create-payment-modal.component';
 import { DeletePaymentModalComponent } from './components/delete-payment-modal/delete-payment-modal.component';
+import { EditPaymentModalComponent } from './components/edit-payment-modal/edit-payment-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreatePaymentModalComponent,
-    DeletePaymentModalComponent
+    DeletePaymentModalComponent,
+    EditPaymentModalComponent
   ],
   imports: [
     BrowserModule,

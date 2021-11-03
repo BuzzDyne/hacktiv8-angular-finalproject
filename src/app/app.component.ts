@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CreatePaymentModalComponent } from './components/create-payment-modal/create-payment-modal.component';
 import { DeletePaymentModalComponent } from './components/delete-payment-modal/delete-payment-modal.component';
+import { EditPaymentModalComponent } from './components/edit-payment-modal/edit-payment-modal.component';
 import { Payment } from './models/Payment';
 import { PaymentService } from './services/payment.service';
 
@@ -40,7 +41,23 @@ export class AppComponent {
       }
     )
   }
+  onEditBtnClick(id: number) {
+    const modalRef = this.modalService.open(EditPaymentModalComponent)
+    modalRef.componentInstance.payID = id
 
+    modalRef.result.then(
+      (res) => { //Success (closed)
+        console.log(`Res = ${res}`);
+        if(res == "onSuccess") {
+          this.showToast("Data was successfully updated to server!")
+          this.refreshTable()
+        }
+      }, 
+      (reason) => { //Dismissed
+        console.log(`Reason = ${reason}`);
+      }
+    )
+  }
   onDeleteBtnClick(id: number) {
     const modalRef = this.modalService.open(DeletePaymentModalComponent)
     modalRef.componentInstance.payID = id

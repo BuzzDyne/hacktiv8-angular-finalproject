@@ -34,7 +34,7 @@
             <td>{{ p.cardNumber }}</td>
             <td>{{ p.expirationDate | date: 'MMM YYYY' }}</td>
             <td>
-              <button class="btn btn-sm btn-warning" style="margin-right: 4px;">
+              <button (click)="onEditBtnClick(p.id)" class="btn btn-sm btn-warning" style="margin-right: 4px;">
                 <i class="bi bi-pencil-square"></i>
               </button>
               <button (click)="onDeleteBtnClick(p.id)" class="btn btn-sm btn-danger">
