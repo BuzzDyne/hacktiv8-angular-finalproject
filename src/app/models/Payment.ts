@@ -10,6 +10,6 @@ export interface Payment {
 export interface PaymentCreate {
     cardOwnerName : string
     cardNumber    : string
-    expirationDate: string
+    expirationDate: Date
     securityCode  : string
 }

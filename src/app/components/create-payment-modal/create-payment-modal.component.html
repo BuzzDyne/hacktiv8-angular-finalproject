@@ -1,1 +1,111 @@
-<p>create-payment-modal works!</p>
+<div class="modal-header">
+    <h4 class="modal-title">Add New Payment</h4>
+    <span
+        class="x-btn"
+        (click)="activeModal.dismiss('Cross click')">
+        <span>&times;</span>
+    </span>
+</div>
+
+<div class="modal-body">
+    <form 
+        class="container"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="OwnerName">Owner Name</label>
+            <input 
+                type="text" 
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.OwnerName.errors }"
+                name="OwnerName"
+                id="OwnerName"
+                formControlName="OwnerName"
+                placeholder="Owner Name"
+            >
+            <div *ngIf="submitted && f.OwnerName.errors" class="invalid-feedback">
+                <div *ngIf="f.OwnerName.errors.required">Must not be empty!</div>
+            </div>
+            
+            <label for="CardNumber">Card Number</label>
+            <input 
+                type="email"
+                maxlength="16"
+                class="form-control isInvalid"
+                [ngClass]="{ 'is-invalid': submitted && f.CardNumber.errors }"
+                name="CardNumber"
+                id="CardNumber"
+                autocomplete="nope"
+                formControlName="CardNumber"
+                placeholder="Card Number"
+            >
+            <div *ngIf="submitted && f.CardNumber.errors" class="invalid-feedback">
+                <div *ngIf="f.CardNumber.errors.required">Must not be empty!</div>
+                <div *ngIf="f.CardNumber.errors.minlength">Must be 16 digits</div>
+                <div *ngIf="f.CardNumber.errors.pattern">Must only be numbers!</div>
+            </div>
+
+            <label for="SecurityCode">Security Code</label>
+            <input 
+                type="text" 
+                maxlength="3"
+                class="form-control isInvalid"
+                [ngClass]="{ 'is-invalid': submitted && f.SecurityCode.errors }"
+                name="SecurityCode"
+                id="SecurityCode"
+                formControlName="SecurityCode"
+                placeholder="CVV/CVC"
+            >
+            <div *ngIf="submitted && f.SecurityCode.errors" class="invalid-feedback">
+                <div *ngIf="f.SecurityCode.errors.required">Must not be empty!</div>
+                <div *ngIf="f.SecurityCode.errors.minlength">Must be 3 digits</div>
+                <div *ngIf="f.SecurityCode.errors.pattern">Must only be numbers!</div>
+            </div>
+
+            <label for="expMonth">Valid Thru</label>
+            <input 
+                type="text" 
+                class="form-control isInvalid"
+                maxlength="2"
+                [ngClass]="{ 'is-invalid': submitted && f.expMonth.errors }"
+                name="expMonth"
+                id="expMonth"
+                formControlName="expMonth"
+                placeholder="MM"
+            >
+            <div *ngIf="submitted && f.expMonth.errors" class="invalid-feedback">
+                <div *ngIf="f.expMonth.errors.required">Must not be empty!</div>
+                <div *ngIf="f.expMonth.errors.minlength">Must be 2 digits</div>
+                <div *ngIf="f.expMonth.errors.pattern">Must only be numbers!</div>
+            </div>
+            <input 
+                type="text" 
+                class="form-control isInvalid"
+                maxlength="2"
+                [ngClass]="{ 'is-invalid': submitted && f.expYear.errors }"
+                name="expYear"
+                id="expYear"
+                formControlName="expYear"
+                placeholder="YY"
+            >
+            <div *ngIf="submitted && f.expYear.errors" class="invalid-feedback">
+                <div *ngIf="f.expYear.errors.required">Must not be empty!</div>
+                <div *ngIf="f.expYear.errors.minlength">Must be 2 digits</div>
+                <div *ngIf="f.expYear.errors.pattern">Must only be numbers!</div>
+            </div>
+
+
+            <button
+                type="submit"
+                id="submitBtn"
+                class="btn btn-success col-12"
+                >
+                <!-- [disabled]="!form.valid" -->
+                Submit
+            </button>
+
+        </div>
+        
+    </form>
+</div>

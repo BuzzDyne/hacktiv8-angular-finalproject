@@ -7,17 +7,22 @@
 
 <div class="container">
   <div class="row d-flex justify-content-center flex-wrap">
-    <h5 class="col-12 display-4 page-header" style="text-align: center;">Payments Table</h5>
+    <h5 
+      (click)="showToast('Data was successfully sent to server!')"
+      class="col-12 display-4 page-header" 
+      style="text-align: center;">
+      Payments Table
+    </h5>
 
     <div class="col-12 d-flex justify-content-center" style="margin-bottom: 8px;">
-      <button class="btn btn-sm btn-success col-1">+</button>
+      <button class="btn btn-sm btn-success col-1" (click)="onAddButtonClick()">+</button>
     </div>
     <table class="table table-striped col-12">
       <thead>
         <tr>
           <th scope="col">Card Owner</th>
           <th scope="col">Card Number</th>
-          <th scope="col">Exp. Date</th>
+          <th scope="col">Expire On</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -26,17 +31,26 @@
           <tr *ngFor="let p of payments">
             <th scope="row">{{ p.cardOwnerName }}</th>
             <td>{{ p.cardNumber }}</td>
-            <td>{{ p.expirationDate | date: 'MM/dd' }}</td>
+            <td>{{ p.expirationDate | date: 'MMM YYYY' }}</td>
             <td>
               <button class="btn btn-sm btn-warning" style="margin-right: 4px;">
                 Edit
               </button>
-              <button class="btn btn-sm btn-danger">
+              <button (click)="onDeleteBtnClick(p.id)" class="btn btn-sm btn-danger">
                 Delete
               </button>
             </td>
           </tr>
         </tbody>
     </table>
+  </div>
+
+  <div class="my-toast">
+    <ngb-toast 
+      *ngIf="isToastShowing"
+      header="Success"
+      [autohide]="true"
+      [delay]="4000"
+      (hidden)="onToastHidden()">{{toastText}}</ngb-toast>
   </div>
 </div>

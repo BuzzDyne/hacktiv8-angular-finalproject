@@ -23,18 +23,18 @@ export class PaymentService {
       .pipe(catchError(this.handleError))
   }
 
-  createUser(user: PaymentCreate) {
-    return this.http.post<Payment>(this.endpoint, user)
+  createPayment(pay: PaymentCreate) {
+    return this.http.post<Payment>(this.endpoint, pay)
       .pipe(catchError(this.handleError))
   }
 
-  updateUser(id: number, user: Payment) {
+  updatePayment(id: number, pay: Payment) {
     const url = `${this.endpoint}/${id}`
-    return this.http.put(url, user)
+    return this.http.put(url, pay)
       .pipe(catchError(this.handleError))
   }
 
-  deleteUserById(id: number) {
+  deletePaymentById(id: number) {
     const url = `${this.endpoint}/${id}`
     return this.http.delete(url)
       .pipe(catchError(this.handleError))

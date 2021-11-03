@@ -6,3 +6,9 @@
     font-size: 2rem;
     margin-top: 1em;
 }
+
+.my-toast {
+    position: fixed; 
+    right: 20px; 
+    top: 20px;
+}

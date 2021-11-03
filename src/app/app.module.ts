@@ -6,11 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreatePaymentModalComponent } from './components/create-payment-modal/create-payment-modal.component';
+import { DeletePaymentModalComponent } from './components/delete-payment-modal/delete-payment-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreatePaymentModalComponent
+    CreatePaymentModalComponent,
+    DeletePaymentModalComponent
   ],
   imports: [
     BrowserModule,
