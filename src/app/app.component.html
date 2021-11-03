@@ -7,7 +7,7 @@
     </div>
     <div *ngIf="currUserEmail" class="d-flex">
       <div class="login-text">Hello, {{currUserEmail}}</div>
-      <button class="btn btn-sm btn-outline-light">Logout</button>
+      <button (click)="onLogoutBtnClick()" class="btn btn-sm btn-outline-light">Logout</button>
     </div>
   </div>
 </navbar>

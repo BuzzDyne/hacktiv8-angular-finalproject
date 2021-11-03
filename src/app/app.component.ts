@@ -52,8 +52,26 @@ export class AppComponent {
         console.log(`Reason = ${reason}`);
       }
     )
-   }
+  }
   onRegisterBtnClick() { }
+  onLogoutBtnClick() {
+    const modalRef = this.modalService.open(DeletePaymentModalComponent)
+    // modalRef.componentInstance.payID = id
+    modalRef.componentInstance.title = "Logout"
+    modalRef.componentInstance.body = `Are you sure to logout?`
+    modalRef.componentInstance.confirmButtonText = "Yes, Logout"
+
+    modalRef.result.then(
+      (res) => { //Success (closed)
+        this.authService.signOut()
+        this.refreshCurrUserEmail()
+        this.showToast("You are logged out!")
+      }, 
+      (reason) => { //Dismissed
+        console.log(`Reason = ${reason}`);
+      }
+    )
+  }
   onAddButtonClick() {
     const modalRef = this.modalService.open(CreatePaymentModalComponent).result.then(
       (res) => { //Success (closed)
@@ -89,7 +107,10 @@ export class AppComponent {
   }
   onDeleteBtnClick(id: number) {
     const modalRef = this.modalService.open(DeletePaymentModalComponent)
-    modalRef.componentInstance.payID = id
+    // modalRef.componentInstance.payID = id
+    modalRef.componentInstance.title = "Delete Payment"
+    modalRef.componentInstance.body = `Are you sure to delete Payment Detail of ID (${id})?`
+    modalRef.componentInstance.confirmButtonText = "Delete"
 
     modalRef.result.then(
       (res) => { //Success (closed)
