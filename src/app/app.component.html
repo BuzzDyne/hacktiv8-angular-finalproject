@@ -1,6 +1,6 @@
 <navbar class="navbar navbar-dark bg-myred">
   <div class="container">
-    <span class="navbar-brand" style="cursor: pointer; font-weight: bold;">OCBC NISP</span>
+    <span class="navbar-brand" style="cursor: pointer; font-weight: bold;" (click)="showToast('Welcome to Payments Table!')">OCBC NISP</span>
     <button class="btn btn-outline-light">Add Payment</button>
   </div>
 </navbar>
@@ -8,14 +8,15 @@
 <div class="container">
   <div class="row d-flex justify-content-center flex-wrap">
     <h5 
-      (click)="showToast('Data was successfully sent to server!')"
       class="col-12 display-4 page-header" 
       style="text-align: center;">
       Payments Table
     </h5>
 
     <div class="col-12 d-flex justify-content-center" style="margin-bottom: 8px;">
-      <button class="btn btn-sm btn-success col-1" (click)="onAddButtonClick()">+</button>
+      <button class="btn btn-sm btn-success col-1" (click)="onAddButtonClick()">
+        <i class="bi bi-plus"></i>
+      </button>
     </div>
     <table class="table table-striped col-12">
       <thead>
@@ -34,10 +35,10 @@
             <td>{{ p.expirationDate | date: 'MMM YYYY' }}</td>
             <td>
               <button class="btn btn-sm btn-warning" style="margin-right: 4px;">
-                Edit
+                <i class="bi bi-pencil-square"></i>
               </button>
               <button (click)="onDeleteBtnClick(p.id)" class="btn btn-sm btn-danger">
-                Delete
+                <i class="bi bi-trash-fill"></i>
               </button>
             </td>
           </tr>
