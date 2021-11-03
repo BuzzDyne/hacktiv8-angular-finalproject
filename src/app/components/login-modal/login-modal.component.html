@@ -30,6 +30,7 @@
             >
             <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                 <div *ngIf="f.email.errors.required">Must not be empty!</div>
+                <div *ngIf="f.email.errors.email">Must be a valid email address!</div>
             </div>
 
             <label for="password">Password</label>

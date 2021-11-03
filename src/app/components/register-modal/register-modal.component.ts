@@ -13,7 +13,7 @@ export class RegisterModalComponent{
   submitted = false
   form: FormGroup
 
-  postError: string = ""
+  postError: string[] = []
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -54,7 +54,9 @@ export class RegisterModalComponent{
         console.log(result)
         this.authService.setAuthorizationToken(result['token'])
       },
-      error => this.postError = error,
+      error => {
+        this.postError = error.split('$')
+      },
       () => this.activeModal.close("onSuccess")
     )
   }

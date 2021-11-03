@@ -60,10 +60,16 @@ export class AuthService {
   }
 
   handleError(err: HttpErrorResponse){
+    console.log(err.error.errors);
+    
+    
     if(err.error.errors[0] === "Invalid login request") {
       return throwError(err.error.errors[0])
     } else if(err.error.errors[0] === "Email already in user") {
       return throwError("Email already in use")
+    } else if(err.error.errors) {
+      let errStr = err.error.errors.join('$')
+      return throwError(errStr)
     } else if(err.error instanceof ErrorEvent)
       return throwError(err.error.message)
     else

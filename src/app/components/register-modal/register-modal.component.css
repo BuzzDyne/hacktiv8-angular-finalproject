@@ -9,3 +9,7 @@
 .x-btn>span{
     font-size: 1.3em;
 }
+
+.my-alert>p {
+    margin-bottom: 0px;
+}
