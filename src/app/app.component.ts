@@ -4,6 +4,7 @@ import { CreatePaymentModalComponent } from './components/create-payment-modal/c
 import { DeletePaymentModalComponent } from './components/delete-payment-modal/delete-payment-modal.component';
 import { EditPaymentModalComponent } from './components/edit-payment-modal/edit-payment-modal.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
+import { RegisterModalComponent } from './components/register-modal/register-modal.component';
 import { Payment } from './models/Payment';
 import { AuthService } from './services/auth.service';
 import { PaymentService } from './services/payment.service';
@@ -53,7 +54,20 @@ export class AppComponent {
       }
     )
   }
-  onRegisterBtnClick() { }
+  onRegisterBtnClick() { 
+    const modalRef = this.modalService.open(RegisterModalComponent)
+
+    modalRef.result.then(
+      (res) => { //Success (closed)
+        this.refreshCurrUserEmail()
+        this.showToast("Register successful, welcome!")
+      }, 
+      (reason) => { //Dismissed
+        console.log(`Reason = ${reason}`);
+      }
+    )
+  }
+
   onLogoutBtnClick() {
     const modalRef = this.modalService.open(DeletePaymentModalComponent)
     // modalRef.componentInstance.payID = id
