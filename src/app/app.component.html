@@ -1,9 +1,13 @@
 <navbar class="navbar navbar-dark bg-myred">
   <div class="container">
     <span class="navbar-brand" style="cursor: pointer; font-weight: bold;" (click)="showToast('Welcome to Payments Table!')">HACKTIV8 Bank</span>
-    <div>
-      <button class="btn btn-outline-light" style="margin-right: 4px;">Register</button>
-      <button class="btn btn-success">Login</button>
+    <div *ngIf="!currUserEmail">
+      <button (click)="onRegisterBtnClick()" class="btn btn-outline-light" style="margin-right: 4px;">Register</button>
+      <button (click)="onLoginBtnClick()" class="btn btn-success">Login</button>
+    </div>
+    <div *ngIf="currUserEmail" class="d-flex">
+      <div class="login-text">Hello, {{currUserEmail}}</div>
+      <button class="btn btn-sm btn-outline-light">Logout</button>
     </div>
   </div>
 </navbar>
@@ -17,7 +21,7 @@
     </h5>
 
     <div class="col-12 d-flex justify-content-center" style="margin-bottom: 8px;">
-      <button class="btn btn-sm btn-success col-1" (click)="onAddButtonClick()">
+      <button [disabled]="!currUserEmail" class="btn btn-sm btn-success col-1" (click)="onAddButtonClick()">
         <i class="bi bi-plus"></i>
       </button>
     </div>
@@ -37,10 +41,10 @@
             <td>{{ p.cardNumber }}</td>
             <td>{{ p.expirationDate | date: 'MMM YYYY' }}</td>
             <td>
-              <button (click)="onEditBtnClick(p.id)" class="btn btn-sm btn-warning" style="margin-right: 4px;">
+              <button [disabled]="!currUserEmail" (click)="onEditBtnClick(p.id)" class="btn btn-sm btn-warning" style="margin-right: 4px;">
                 <i class="bi bi-pencil-square"></i>
               </button>
-              <button (click)="onDeleteBtnClick(p.id)" class="btn btn-sm btn-danger">
+              <button [disabled]="!currUserEmail" (click)="onDeleteBtnClick(p.id)" class="btn btn-sm btn-danger">
                 <i class="bi bi-trash-fill"></i>
               </button>
             </td>

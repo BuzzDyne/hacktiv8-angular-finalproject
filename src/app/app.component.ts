@@ -3,7 +3,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CreatePaymentModalComponent } from './components/create-payment-modal/create-payment-modal.component';
 import { DeletePaymentModalComponent } from './components/delete-payment-modal/delete-payment-modal.component';
 import { EditPaymentModalComponent } from './components/edit-payment-modal/edit-payment-modal.component';
+import { LoginModalComponent } from './components/login-modal/login-modal.component';
 import { Payment } from './models/Payment';
+import { AuthService } from './services/auth.service';
 import { PaymentService } from './services/payment.service';
 
 @Component({
@@ -16,15 +18,42 @@ export class AppComponent {
 
   toastText: string = ""
   isToastShowing: boolean = false
+
+  // De Facto authState for app.component
+  currUserEmail: string = ""
+
   constructor(
     private modalService: NgbModal,
-    public payService: PaymentService
-  ) { this.refreshTable() }
+    public payService: PaymentService,
+    public authService: AuthService
+  ) { 
+    this.refreshCurrUserEmail()
+    this.refreshTable() 
+    console.log(`Inside Constructor, currUserEmail is (${this.currUserEmail})`);
+    
+  }
 
   refreshTable() {
     this.payService.getAllPayments().subscribe(res => this.payments = res)
   }
+  refreshCurrUserEmail() {
+    this.currUserEmail = this.authService.getCurrUserEmail()
+  }
 
+  onLoginBtnClick() { 
+    const modalRef = this.modalService.open(LoginModalComponent)
+
+    modalRef.result.then(
+      (res) => { //Success (closed)
+        this.refreshCurrUserEmail()
+        this.showToast("You are logged in!")
+      }, 
+      (reason) => { //Dismissed
+        console.log(`Reason = ${reason}`);
+      }
+    )
+   }
+  onRegisterBtnClick() { }
   onAddButtonClick() {
     const modalRef = this.modalService.open(CreatePaymentModalComponent).result.then(
       (res) => { //Success (closed)

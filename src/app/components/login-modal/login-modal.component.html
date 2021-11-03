@@ -1,0 +1,54 @@
+<div class="modal-header">
+    <h4 class="modal-title">Login</h4>
+    <span
+        class="x-btn"
+        (click)="activeModal.dismiss('Cross click')">
+        <span>&times;</span>
+    </span>
+</div>
+
+<div class="modal-body">
+    <form 
+        class="container"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input 
+                type="text" 
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                name="email"
+                id="email"
+                formControlName="email"
+                placeholder="Owner Name"
+            >
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Must not be empty!</div>
+            </div>
+
+            <label for="password">Password</label>
+            <input 
+                type="password" 
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                name="password"
+                id="password"
+                formControlName="password"
+                placeholder="Owner Name"
+            >
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Must not be empty!</div>
+            </div>
+            <button
+                type="submit"
+                id="submitBtn"
+                class="btn btn-success col-12"
+                style="margin-top: 8px;"
+                >
+                Login
+            </button>
+        </div>
+    </form>
+</div>

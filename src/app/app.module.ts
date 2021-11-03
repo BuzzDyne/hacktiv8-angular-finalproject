@@ -8,13 +8,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreatePaymentModalComponent } from './components/create-payment-modal/create-payment-modal.component';
 import { DeletePaymentModalComponent } from './components/delete-payment-modal/delete-payment-modal.component';
 import { EditPaymentModalComponent } from './components/edit-payment-modal/edit-payment-modal.component';
+import { LoginModalComponent } from './components/login-modal/login-modal.component';
+import { RegisterModalComponent } from './components/register-modal/register-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreatePaymentModalComponent,
     DeletePaymentModalComponent,
-    EditPaymentModalComponent
+    EditPaymentModalComponent,
+    LoginModalComponent,
+    RegisterModalComponent
   ],
   imports: [
     BrowserModule,
