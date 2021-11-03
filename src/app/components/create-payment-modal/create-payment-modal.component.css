@@ -17,3 +17,12 @@
 label:not(:first-child) {
     margin-top: 1em;
 }
+
+.my-cvv-valid-container {
+    margin-top: 16px;
+    justify-content: space-between;
+}
+
+.my-flexd-column {
+    flex-direction: column;
+}

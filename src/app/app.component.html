@@ -1,6 +1,6 @@
 <navbar class="navbar navbar-dark bg-myred">
   <div class="container">
-    <span class="navbar-brand" style="cursor: pointer; font-weight: bold;" (click)="showToast('Welcome to Payments Table!')">HACKTIV8 Bank</span>
+    <span class="navbar-brand" style="cursor: pointer; font-weight: bold;" (click)="showToast('Welcome to Payments Table!')">BANK RICKY</span>
     <div *ngIf="!currUserEmail">
       <button (click)="onRegisterBtnClick()" class="btn btn-outline-light" style="margin-right: 4px;">Register</button>
       <button (click)="onLoginBtnClick()" class="btn btn-success">Login</button>
@@ -14,17 +14,25 @@
 
 <div class="container">
   <div class="row d-flex justify-content-center flex-wrap">
+    <div *ngIf="!currUserEmail" class="alert alert-warning" role="alert">
+      Please <strong>login</strong> or <strong>register</strong> if you want to manage payments
+    </div>
     <h5 
       class="col-12 display-4 page-header" 
-      style="text-align: center;">
+      style="text-align: center; margin-top: 0px;">
       Payments Table
     </h5>
 
-    <div class="col-12 d-flex justify-content-center" style="margin-bottom: 8px;">
+    <!-- <div class="col-12 d-flex justify-content-center" style="margin-bottom: 8px;">
       <button [disabled]="!currUserEmail" class="btn btn-sm btn-success col-1" (click)="onAddButtonClick()">
         <i class="bi bi-plus"></i>
       </button>
-    </div>
+    </div> -->
+
+    <button [disabled]="!currUserEmail" class="btn btn-sm btn-success my-fab" (click)="onAddButtonClick()">
+      <i class="bi bi-plus"></i>
+    </button>
+
     <table class="table table-striped col-12">
       <thead>
         <tr>
@@ -58,7 +66,7 @@
       *ngIf="isToastShowing"
       header="Success"
       [autohide]="true"
-      [delay]="4000"
+      [delay]="2500"
       (hidden)="onToastHidden()">{{toastText}}</ngb-toast>
   </div>
 </div>

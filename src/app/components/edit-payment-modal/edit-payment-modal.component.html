@@ -46,57 +46,69 @@
                 <div *ngIf="f.CardNumber.errors.pattern">Must only be numbers!</div>
             </div>
 
-            <label for="SecurityCode">Security Code</label>
-            <input 
-                type="text" 
-                maxlength="3"
-                class="form-control isInvalid"
-                [ngClass]="{ 'is-invalid': submitted && f.SecurityCode.errors }"
-                name="SecurityCode"
-                id="SecurityCode"
-                formControlName="SecurityCode"
-                placeholder="CVV/CVC"
-            >
-            <div *ngIf="submitted && f.SecurityCode.errors" class="invalid-feedback">
-                <div *ngIf="f.SecurityCode.errors.required">Must not be empty!</div>
-                <div *ngIf="f.SecurityCode.errors.minlength">Must be 3 digits</div>
-                <div *ngIf="f.SecurityCode.errors.pattern">Must only be numbers!</div>
-            </div>
+            <div class="d-flex my-cvv-valid-container">
+                <div class="col-4" style="padding-left: 0px;">
+                    <label for="SecurityCode">Security Code</label>
+                    <input 
+                        type="text" 
+                        maxlength="3"
+                        class="form-control isInvalid"
+                        [ngClass]="{ 'is-invalid': submitted && f.SecurityCode.errors }"
+                        name="SecurityCode"
+                        id="SecurityCode"
+                        formControlName="SecurityCode"
+                        placeholder="CVV/CVC"
+                    >
+                    <div *ngIf="submitted && f.SecurityCode.errors" class="invalid-feedback">
+                        <div *ngIf="f.SecurityCode.errors.required">Must not be empty!</div>
+                        <div *ngIf="f.SecurityCode.errors.minlength">Must be 3 digits</div>
+                        <div *ngIf="f.SecurityCode.errors.pattern">Must only be numbers!</div>
+                    </div>
+                </div>
+    
+                <div class="d-flex my-flexd-column col-7" style="padding-right: 0px;">
+                    <div>
+                        <label for="expMonth">Valid Thru (MM/YY)</label>
+                    </div>
+                    <div class="d-flex">
+                        <div class="d-flex my-flexd-column">
+                            <input 
+                                type="text" 
+                                class="form-control isInvalid"
+                                maxlength="2"
+                                [ngClass]="{ 'is-invalid': submitted && f.expMonth.errors }"
+                                name="expMonth"
+                                id="expMonth"
+                                formControlName="expMonth"
+                                placeholder="MM"
+                            >
+                            <div *ngIf="submitted && f.expMonth.errors" class="invalid-feedback">
+                                <div *ngIf="f.expMonth.errors.required">Must not be empty!</div>
+                                <div *ngIf="f.expMonth.errors.minlength">Must be 2 digits</div>
+                                <div *ngIf="f.expMonth.errors.pattern">Must only be numbers!</div>
+                            </div>
+                        </div>
 
-            <label for="expMonth">Valid Thru</label>
-            <input 
-                type="text" 
-                class="form-control isInvalid"
-                maxlength="2"
-                [ngClass]="{ 'is-invalid': submitted && f.expMonth.errors }"
-                name="expMonth"
-                id="expMonth"
-                formControlName="expMonth"
-                placeholder="MM"
-            >
-            <div *ngIf="submitted && f.expMonth.errors" class="invalid-feedback">
-                <div *ngIf="f.expMonth.errors.required">Must not be empty!</div>
-                <div *ngIf="f.expMonth.errors.minlength">Must be 2 digits</div>
-                <div *ngIf="f.expMonth.errors.maxlength">Must be 2 digits</div>
-                <div *ngIf="f.expMonth.errors.pattern">Must only be numbers!</div>
+                        <div class="d-flex my-flexd-column">
+                            <input 
+                                type="text" 
+                                class="form-control isInvalid"
+                                maxlength="2"
+                                [ngClass]="{ 'is-invalid': submitted && f.expYear.errors }"
+                                name="expYear"
+                                id="expYear"
+                                formControlName="expYear"
+                                placeholder="YY"
+                            >
+                            <div *ngIf="submitted && f.expYear.errors" class="invalid-feedback">
+                                <div *ngIf="f.expYear.errors.required">Must not be empty!</div>
+                                <div *ngIf="f.expYear.errors.minlength">Must be 2 digits</div>
+                                <div *ngIf="f.expYear.errors.pattern">Must only be numbers!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <input 
-                type="text" 
-                class="form-control isInvalid"
-                maxlength="2"
-                [ngClass]="{ 'is-invalid': submitted && f.expYear.errors }"
-                name="expYear"
-                id="expYear"
-                formControlName="expYear"
-                placeholder="YY"
-            >
-            <div *ngIf="submitted && f.expYear.errors" class="invalid-feedback">
-                <div *ngIf="f.expYear.errors.required">Must not be empty!</div>
-                <div *ngIf="f.expYear.errors.minlength">Must be 2 digits</div>
-                <div *ngIf="f.expYear.errors.maxlength">Must be 2 digits</div>
-                <div *ngIf="f.expYear.errors.pattern">Must only be numbers!</div>
-            </div>
-
 
             <button
                 type="submit"

@@ -1,5 +1,6 @@
 .bg-myred {
     background-color: #EA2629;
+    margin-bottom: 16px;
 }
 
 .page-header {
@@ -17,4 +18,17 @@
     margin-top: 3px;
     margin-right: 4px;
     color: floralwhite;
+}
+
+.my-fab {
+    position: fixed;
+    bottom: 40px;
+    right: 40px; 
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+}
+
+.my-fab>i {
+    font-size: 2em;
 }
